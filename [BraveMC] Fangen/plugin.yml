@@ -1,0 +1,6 @@
+name: FangSys
+version: 1.0
+author: elias
+main: de.brave.fangen.FangSystem
+commands:
+     fangsys:
