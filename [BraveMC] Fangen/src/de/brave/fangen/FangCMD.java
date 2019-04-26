@@ -19,7 +19,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class FangCMD implements CommandExecutor , Listener{
+public class FangCMD implements CommandExecutor, Listener {
 
 	private final FangSystem fsys;
 
