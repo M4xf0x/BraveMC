@@ -1,11 +1,13 @@
 package de.m4xf0x.blf;
 
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -27,9 +29,9 @@ public class FangenEvents implements Listener {
 			Player tagger = (Player) e.getDamager();
 
 			if (fangen.playerIngame.contains(taggedPlayer) && fangen.playerIngame.contains(tagger)) {
-				
+
 				e.setDamage(0);
-				
+
 				if (tagger == fangen.catcher) {
 
 					if (lastTagger != taggedPlayer || System.currentTimeMillis() - lastTaggedTime >= 5000) {
@@ -50,7 +52,7 @@ public class FangenEvents implements Listener {
 
 					} else {
 						tagger.sendMessage(fangen.getFangenMsg().waitForTagging());
-						
+
 					}
 				}
 			} else {
@@ -75,19 +77,19 @@ public class FangenEvents implements Listener {
 						tagger.sendMessage(fangen.getFangenMsg().Du_hast_xxx_gefangen(taggedPlayer.getName()));
 
 						fangen.catcher = taggedPlayer;
-						
+
 						fangen.sendActionbar(tagger, "");
 						tagger.getInventory().setChestplate(null);
 
 						taggedPlayer.sendMessage(fangen.getFangenMsg().Du_wurdest_gefangen());
 						taggedPlayer.playSound(taggedPlayer.getLocation(), Sound.LEVEL_UP, 1, 2);
-						
+
 						lastTagger = tagger;
 						lastTaggedTime = System.currentTimeMillis();
 
 					} else {
 						tagger.sendMessage(fangen.getFangenMsg().waitForTagging());
-						
+
 					}
 
 				}
@@ -95,12 +97,12 @@ public class FangenEvents implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void onLeave(PlayerQuitEvent e) {
-		
+
 		Player p = e.getPlayer();
-		
+
 		fangen.leaveGame(p);
 
 		if (p == fangen.catcher) {
@@ -108,14 +110,30 @@ public class FangenEvents implements Listener {
 			fangen.searchNewCatcher();
 			p.getInventory().setChestplate(null);
 		}
-		
+
 	}
-	
+
 	@EventHandler
 	public void onJoinSetActionbar(PlayerJoinEvent e) {
-		
+
 		fangen.sendActionbar(e.getPlayer(), "");
-		
+
+	}
+
+	@EventHandler
+	public void onItemLeave(PlayerInteractEvent e) {
+
+		if (e.getPlayer().getItemInHand() != null) {
+
+			if (e.getPlayer().getItemInHand().getType() == Material.SLIME_BALL && e.getPlayer().getItemInHand()
+					.getItemMeta().getDisplayName().equalsIgnoreCase("§8» §a§lVerlassen")) {
+				
+				e.getPlayer().performCommand("fangen");
+				
+			}
+
+		}
+
 	}
 
 }

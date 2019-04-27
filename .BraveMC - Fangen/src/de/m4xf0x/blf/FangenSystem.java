@@ -93,7 +93,7 @@ public class FangenSystem extends JavaPlugin {
 
 				@Override
 				public void run() {
-					final Location loc = p.getLocation().add(0, 2.25, 0);
+					final Location loc = p.getLocation().add(0, 2.45, 0);
 					if (p != null)
 						p.getWorld().playEffect(loc, Effect.COLOURED_DUST, 5);
 
@@ -116,17 +116,23 @@ public class FangenSystem extends JavaPlugin {
 
 		p.getInventory().setItem(8, null);
 
-		ItemStack[] ia = inventorys.get(p);
+		try {
 
-		for (int i = 0; i < ia.length; i++) {
+			ItemStack[] ia = inventorys.get(p);
 
-			if (ia[i] != null) {
+			for (int i = 0; i < ia.length; i++) {
 
-				ItemStack temp = ia[i];
+				if (ia[i] != null) {
 
-				p.getInventory().setItem(i, temp);
+					ItemStack temp = ia[i];
 
+					p.getInventory().setItem(i, temp);
+
+				}
 			}
+
+		} catch (NullPointerException ex) {
+
 		}
 
 		if (effect.containsKey(p)) {
