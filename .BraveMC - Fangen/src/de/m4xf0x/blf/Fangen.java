@@ -45,7 +45,7 @@ public class Fangen extends JavaPlugin {
 	}
 
 	public ArrayList<Player> playerIngame = new ArrayList<>();
-
+  
 	public Player catcher;
 
 	public FangenMsg getFangenMsg() {
