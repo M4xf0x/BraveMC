@@ -141,7 +141,7 @@ public class Fangen extends JavaPlugin {
 			playerIngame.remove(p);
 
 		}
-		
+
 		if (catcher == p) {
 
 			searchNewCatcher();
