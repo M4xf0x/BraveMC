@@ -8,9 +8,9 @@ import org.bukkit.entity.Player;
 
 public class FangenCMD implements CommandExecutor {
 
-	Fangen fangen;
+	FangenSystem fangen;
 
-	public FangenCMD(Fangen fangen) {
+	public FangenCMD(FangenSystem fangen) {
 		this.fangen = fangen;
 	}
 

@@ -11,9 +11,9 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class FangenEvents implements Listener {
 
-	Fangen fangen;
+	FangenSystem fangen;
 
-	public FangenEvents(Fangen fangen) {
+	public FangenEvents(FangenSystem fangen) {
 		this.fangen = fangen;
 	}
 

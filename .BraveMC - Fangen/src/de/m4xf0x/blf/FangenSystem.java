@@ -23,7 +23,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
 
-public class Fangen extends JavaPlugin {
+public class FangenSystem extends JavaPlugin {
 
 	public FangenMsg fangenMsg;
 	public FangenCMD fangenCmd;
@@ -45,7 +45,7 @@ public class Fangen extends JavaPlugin {
 	}
 
 	public ArrayList<Player> playerIngame = new ArrayList<>();
-  
+
 	public Player catcher;
 
 	public FangenMsg getFangenMsg() {
