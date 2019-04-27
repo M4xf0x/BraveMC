@@ -1,6 +1,6 @@
 name: Fangen
 version: 1.0
 author: Elias / Maxi
-main: de.m4xf0x.blf.Fangen
+main: de.m4xf0x.blf.FangenSystem
 commands:
      fangen:
