@@ -1,0 +1,6 @@
+name: Fangen
+version: 1.0
+author: Elias / Maxi
+main: de.m4xf0x.blf.Fangen
+commands:
+     fangen:
